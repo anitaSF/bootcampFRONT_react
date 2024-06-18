@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 // Con esto, las propiedades del objeto props que a su vez son objeto, se deben llamar en el argumento con el nombre del objeto completo, pero en el elemento html se llama {objeto.prop}.
 
-function Register({ title, textMessage }) {
+function Register({ title, textMessage, setIsLight }) {
 
     // Variables de estado (useState): tipo de variable propia de React para trabajar en determinados tipos de componentes, por ejemplo formularios. Se define entre corchetes con el nombre de la variable y la función o método para activarla (setVariable): const [variable, setVariable] = useState(valor); si es objeto tendra dicha estructura: const [variable, setVariable] = useState({prop1: '', prop2: '', ...})
     const [user, setUser] = useState({
@@ -30,19 +30,22 @@ function Register({ title, textMessage }) {
         // En este caso si se rellena el input Nombre con id='name', el valor se guardará en la propiedad name del objeto user (user.name)
     };
 
+    // Funcion manejadora del evento "handleMode" definido sobre los elementos html <button></button>, para cambiar el modo de color de la web. Este cambio se aplica sobre el componente padre "App.jsx" mediante el cambio de atributo className de su elemento html <Register></Register>. Por lo que la variable de estado que aloja el valor de la clase css está definida también en este componente padre. 
+    // Para importarla en este componente, se sigue el mismo proceso que otras variables, se pasa el atributo dado al elemento html del componente padre (setIsLight) como argumento de la function Register
     const handleMode = (e) => {
-        const id = e.target.id;
+        const id = e.target.id; // Se obtiene el "id" del elemento html que tiene el evento aplicado <button></button>
         if (id === 'dark') {
             setIsLight(false);
         } else {
             setIsLight(true);
-        }
+        } // Condicional para dar el valor 'false' a la variable de estado 'setIsLight' si el id='dark y darle el valor 'true' si el id es otro. Esta variable es la que define la className que tendrá el elemento html <Register setIsLignt={setIsLight}></Register> para que la web tenga darkmode o no
     }
 
     return (
         <div>
             <button id='light' onClick={{ handleMode }}>Claro</button>
             <button id='dark' onClick={{ handleMode }}>Oscuro</button>
+
             <h5>{title}</h5>
 
             <form action=''>

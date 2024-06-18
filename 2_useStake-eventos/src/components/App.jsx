@@ -15,6 +15,7 @@ function App() {
   };
 
   // Otro uso de las Variables de estado, es cuando el componente debe cambiar de estado, por ejemplo en este caso de aspecto, mediante cambio de clase css
+  // Como en este caso, la variable se define en el componente padre, que es al que aplica todo el cambio, pero el elemento html que la llama está en el componente importado Register. El valor se pasa al componente hijo (Register) mediante atributo, pero en vez de el nombre de la variable, se utiliza la funcion que la ejecuta, setVariable (en este caso setIsLight)
   const [isLight, setIsLight] = useState(true);
 
   return (
@@ -22,6 +23,7 @@ function App() {
       <section>
         <h1>Eventos</h1>
         <Register title={title} textMessage={message} setIsLight={setIsLight} ></Register>
+        {/* Elemento html que llama al componente importado <Register></Register>. Los atributos title={title} textMessage={message} son atributos de contenido, llaman a las varaibles declaradas arriba y devuelven el contenido definido en la estructura html del Register. El atributo setIsLight={setIsLight} llama a la variable de estado declarada también arriba, pero en este caso devuelve un cambio de clase css que se ejecuta desde el elemento html Register por un evento onClick definido en 2 elementos <button></button>, uno para activar el modo oscuro y otro para desactivarlo */}
       </section>
     </>
   )
