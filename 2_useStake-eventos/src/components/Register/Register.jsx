@@ -30,19 +30,21 @@ function Register({ title, textMessage, setIsLight }) {
         // En este caso si se rellena el input Nombre con id='name', el valor se guardará en la propiedad name del objeto user (user.name)
     };
 
-    // Funcion manejadora del evento "handleMode" definido sobre los elementos html <button></button>, para cambiar el modo de color de la web. Este cambio se aplica sobre el componente padre "App.jsx" mediante el cambio de atributo className de su elemento html <Register></Register>. Por lo que la variable de estado que aloja el valor de la clase css está definida también en este componente padre. 
-    // Para importarla en este componente, se sigue el mismo proceso que otras variables, se pasa el atributo dado al elemento html del componente padre (setIsLight) como argumento de la function Register
+    // Funcion manejadora del evento "handleMode" definido sobre los elementos html <button></button>, para cambiar el modo de color de la web. Este cambio se aplica sobre el componente padre "App.jsx" mediante el cambio de atributo className de su elemento html <section></section>. Por lo que la variable de estado que aloja el valor de la clase css está definida también en este componente padre. 
+    // Para importarla en este componente, se sigue el mismo proceso que otras variables, se pasa el atributo dado al elemento html <Register setIsLight=(setIsLight)></Register> del componente padre, como argumento de esta function Register.
     const handleMode = (e) => {
         const id = e.target.id; // Se obtiene el "id" del elemento html que tiene el evento aplicado <button></button>
         if (id === 'dark') {
             setIsLight(false);
         } else {
             setIsLight(true);
-        } // Condicional para dar el valor 'false' a la variable de estado 'setIsLight' si el id='dark y darle el valor 'true' si el id es otro. Esta variable es la que define la className que tendrá el elemento html <Register setIsLignt={setIsLight}></Register> para que la web tenga darkmode o no
+        } // Condicional para dar el valor 'false' a la variable de estado 'setIsLight' si el id='dark, y darle el valor 'true' si el id es otro. Esta variable es la que define la className que tendrá el elemento html <section className={isLight ? "light" : "dark"}></section> para que tenga darkmode o no.
+        // Este atributo className a su vez es un condicional para cuestionar si la variable isLight tiene valor true o false y aplicar una clase css u otra.
     }
 
     return (
         <div>
+            {/* Cada elemento button recibe un evento onClick que ejecutará la función definida arriba y llamada en su objeto {handleMode} para activar o desactivar el modo claro/oscuro del elemento <section></section> definido en el elemento padre "App.jxs" */}
             <button id='light' onClick={handleMode}>Claro</button>
             <button id='dark' onClick={handleMode}>Oscuro</button>
 
