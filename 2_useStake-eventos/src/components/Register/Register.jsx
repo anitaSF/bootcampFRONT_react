@@ -43,8 +43,8 @@ function Register({ title, textMessage, setIsLight }) {
 
     return (
         <div>
-            <button id='light' onClick={{ handleMode }}>Claro</button>
-            <button id='dark' onClick={{ handleMode }}>Oscuro</button>
+            <button id='light' onClick={handleMode}>Claro</button>
+            <button id='dark' onClick={handleMode}>Oscuro</button>
 
             <h5>{title}</h5>
 

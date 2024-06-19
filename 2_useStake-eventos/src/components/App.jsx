@@ -20,7 +20,9 @@ function App() {
 
   return (
     <>
-      <section>
+      <section className={isLight ? "light" : "dark"}>
+        {/* El componente <section></section> tiene el atributo de clase definido con la variable de estado "isLight" enlazada con el evento OnClick de los <button></button> del componente "Register". De esta forma será este elemento html el que cambie de estado, aunque los button estén en un componente importado.
+        Para ejecutar el cambio, el atributo className deberá englobar junto con la variable, una condición: si el valor de la variable "isLight(true)" (activado por defecto o por activación del evento Onclick del button id="light") cogerá la clase css "light" y si el valor de la variable "isLight(false)" (activado por el evento Onclik del button id="dark") cogerá la clase css "dark" */}
         <h1>Eventos</h1>
         <Register title={title} textMessage={message} setIsLight={setIsLight} ></Register>
         {/* Elemento html que llama al componente importado <Register></Register>. Los atributos title={title} textMessage={message} son atributos de contenido, llaman a las varaibles declaradas arriba y devuelven el contenido definido en la estructura html del Register. El atributo setIsLight={setIsLight} llama a la variable de estado declarada también arriba, pero en este caso devuelve un cambio de clase css que se ejecuta desde el elemento html Register por un evento onClick definido en 2 elementos <button></button>, uno para activar el modo oscuro y otro para desactivarlo */}
