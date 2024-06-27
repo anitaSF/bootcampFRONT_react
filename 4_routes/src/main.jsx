@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom' // Modulo importado para trabaj
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter> {/* En entorno de desarrollo tambien se puede utilizar la etiqueta <HashRouter></HashRouter>. Pero una vez que se pasa a la versión de producción ya no se suele utilizar y se sustituye por <BrowserRouter></BrowserRouter> */}
       <App />
     </BrowserRouter>
   </React.StrictMode>,

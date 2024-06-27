@@ -1,3 +1,4 @@
+// COMPONENTE 2. Página de inicio
 
 function Home() {
     return (
